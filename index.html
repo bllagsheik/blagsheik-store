@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BlagSheik | Quality Products</title>
+  <meta name="description" content="Discover quality products at BlagSheik. Browse our collection and order directly.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green: #173d31;
+      --accent: #287453;
+      --cream: #f7f5ef;
+      --white: #ffffff;
+      --text: #222923;
+      --muted: #6c756f;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--green);
+      color: white;
+      padding: 22px 6%;
+    }
+
+    .topbar {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 27px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      color: #b6d9bf;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #b6d9bf;
+    }
+
+    .hero {
+      max-width: 1150px;
+      margin: 28px auto;
+      padding: 55px 6%;
+      background: #e6e9df;
+      border-radius: 18px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+      margin: 12px 0;
+    }
+
+    .hero p {
+      color: #58625b;
+      max-width: 460px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 7px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: var(--green);
+    }
+
+    .section {
+      max-width: 1150px;
+      margin: 55px auto;
+      padding: 0 20px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e9e9e2;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+      background: #eaeae5;
+    }
+
+    .product-info {
+      padding: 17px;
+    }
+
+    .product h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .description {
+      font-size: 13px;
+      color: var(--muted);
+      min-height: 42px;
+    }
+
+    .price {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 20px;
+      margin: 12px 0;
+    }
+
+    .product .btn {
+      width: 100%;
+    }
+
+    #cart {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      border: 1px solid #e9e9e2;
+    }
+
+    .cart-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eeeeea;
+    }
+
+    .remove-btn {
+      color: #a12d2d;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .cart-total {
+      font-size: 23px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .notice {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .trust {
+      background: #e6e9df;
+      text-align: center;
+      padding: 30px 15px;
+      margin-top: 55px;
+    }
+
+    footer {
+      background: var(--green);
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+    }
+
+    footer a {
+      color: #b6d9bf;
+    }
+
+    @media (max-width: 850px) {
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero img {
+        height: 240px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .products {
+        gap: 12px;
+      }
+
+      .product img {
+        height: 150px;
+      }
+
+      .product-info {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="topbar">
+      <div class="brand">Blag<span>Sheik</span></div>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#cart">My Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Welcome to BlagSheik</div>
+
+        <h1>Quality Products.<br>Better Everyday Living.</h1>
+
+        <p>
+          Discover useful products, thoughtful designs,
+          and quality you can shop for with confidence.
+        </p>
+
+        <a class="btn" href="#products">Explore Products</a>
+      </div>
+
+      <img
+        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80"
+        alt="Carefully selected fashion products">
+    </section>
+
+    <section class="section" id="products">
+      <div class="section-heading">
+        <div class="eyebrow">Our Collection</div>
+        <h2>Popular Products</h2>
+        <p>Explore our collection and find something you love.</p>
+      </div>
+
+      <div class="products">
+
+        <article class="product">
+          <img src=".\image\product-1.jpg.jpg" 
+          alt="Premium Grooming Kit">
+  
+
+            <div class="product-info">
+            <h3>Premium Grooming Kit</h3>
+             <p class="description">
+            Everyday grooming essentials in one kit.
+            </p>
+           <div class="price">৳1,299</div>
+            <button class="btn"
+         onclick="addToCart('Premium Grooming Kit', 1299)">
+        Add to Cart
+              </button>  
+            </div>    
+          </article> 
+        
+        
+        
+        <article class="product">
+          <img
+            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+            alt="Wireless headphones">
+
+          <div class="product-info">
+            <h3>Wireless Headphones</h3>
+            <p class="description">
+              Enjoy your favourite music in style.
+            </p>
+            <div class="price">৳1,200</div>
+            <button class="btn"
+              onclick="addToCart('Wireless Headphones', 1200)">
+              Add to Cart
+            </button>
+          </div>
+        </article>
+
+        <article class="product">
+          <img
+            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+            alt="Wristwatch">
+
+          <div class="product-info">
+            <h3>Classic Wristwatch</h3>
+            <p class="description">
+              A timeless accessory for everyday wear.
+            </p>
+            <div class="price">৳950</div>
+            <button class="btn"
+              onclick="addToCart('Classic Wristwatch', 950)">
+              Add to Cart
+            </button>
+          </div>
+        </article>
+
+        <article class="product">
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
+            alt="Red sports shoe">
+
+          <div class="product-info">
+            <h3>Sport Sneakers</h3>
+            <p class="description">
+              A sporty look for your daily adventures.
+            </p>
+            <div class="price">৳1,500</div>
+            <button class="btn"
+              onclick="addToCart('Sport Sneakers', 1500)">
+              Add to Cart
+            </button>
+          </div>
+        </article>
+
+        <article class="product">
+          <img
+            src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80"
+            alt="Fashion handbag">
+
+          <div class="product-info">
+            <h3>Everyday Handbag</h3>
+            <p class="description">
+              A stylish bag for your daily essentials.
+            </p>
+            <div class="price">৳1,100</div>
+            <button class="btn"
+              onclick="addToCart('Everyday Handbag', 1100)">
+              Add to Cart
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section" id="cart">
+      <div class="section-heading">
+        <h2>Your Shopping Cart</h2>
+        <p>Review your selected products before ordering.</p>
+      </div>
+
+      <div id="cart-items">Your cart is empty.</div>
+
+      <div class="cart-total" id="cart-total">
+        Total: ৳0
+      </div>
+
+      <button class="btn" onclick="checkoutWhatsApp()">
+       Order via WhatsApp
+      </button>
+
+       <button class="btn" onclick="checkoutMessenger()">
+      Order via Messenger
+      </button>
+      
+
+      <p class="notice">
+        Product prices are examples. Confirm prices and delivery
+        charges with the seller before placing an order.
+      </p>
+    </section>
+
+    <section class="trust">
+      <h2>Shop with Confidence</h2>
+      <p>Quality products. Clear information. Friendly service.</p>
+    </section>
+  </main>
+
+  <footer>
+    <h2>BlagSheik</h2>
+    <p>Quality Products. Shop with Confidence.</p>
+    <p>Contact us through our Facebook page.</p>
+    <p>&copy; 2026 BlagSheik. All rights reserved.</p>
+  </footer>
+
+  <script>
+    let cart = [];
+
+    function addToCart(name, price) {
+      cart.push({ name: name, price: price });
+      updateCart();
+
+      document.getElementById("cart").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const items = document.getElementById("cart-items");
+      const totalElement = document.getElementById("cart-total");
+
+      document.getElementById("cart-count").textContent = cart.length;
+
+      if (cart.length === 0) {
+        items.textContent = "Your cart is empty.";
+      } else {
+        items.innerHTML = cart.map(function(item, index) {
+          return `
+            <div class="cart-row">
+              <span>${item.name} — ৳${item.price.toLocaleString("en-US")}</span>
+              <button class="remove-btn"
+                onclick="removeFromCart(${index})">
+                Remove
+              </button>
+            </div>
+          `;
+        }).join("");
+      }
+
+      const total = cart.reduce(function(sum, item) {
+        return sum + item.price;
+      }, 0);
+
+      totalElement.textContent =
+        "Total: ৳" + total.toLocaleString("en-US");
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Please add a product to your cart first.");
+        return;
+      }
+
+      const message = cart.map(function(item) {
+        return item.name + " - ৳" + item.price;
+      }).join("\n");
+
+      const total = cart.reduce(function(sum, item) {
+        return sum + item.price;
+      }, 0);
+
+      alert(
+        "Your order summary:\n\n" +
+        message +
+        "\n\nTotal: ৳" + total +
+        "\n\nNext, contact the store through its Facebook page."
+      );
+
+      // Messenger will be connected in the next step.
+    }
+const STORE = {
+  whatsappNumber: "8801590056324",
+  facebookPage: "https://www.facebook.com/profile.php?id=61596086092568&sk=directory_links"
+};
+
+function buildOrderMessage() {
+  if (cart.length === 0) {
+    alert("Please add a product to your cart first.");
+    return null;
+  }
+
+  const lines = cart.map(function(item, index) {
+    return (index + 1) + ". " + item.name +
+      " - Tk " + item.price;
+  });
+
+  const total = cart.reduce(function(sum, item) {
+    return sum + item.price;
+  }, 0);
+
+  return "Hello BlagSheik! I want to place an order.\n\n" +
+    lines.join("\n") +
+    "\n\nSubtotal: Tk " + total +
+    "\nPlease confirm availability and delivery charges.";
+}
+
+function checkoutWhatsApp() {
+  const message = buildOrderMessage();
+
+  if (!message) return;
+
+  const url = "https://wa.me/" + STORE.whatsappNumber +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function checkoutMessenger() {
+  if (cart.length === 0) {
+    alert("Please add a product to your cart first.");
+    return;
+  }
+
+  window.open(
+    STORE.facebookPage,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+  alert(
+    "Your cart is ready. In Messenger, send the store " +
+    "your product names and total from your cart."
+  );
+}
+
+  </script>
+
+</body>
+</html>
+
