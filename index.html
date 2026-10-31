@@ -220,6 +220,40 @@
       cursor: pointer;
     }
 
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .quantity-btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #d8ded8;
+      border-radius: 6px;
+      background: #f7f5ef;
+      color: var(--green);
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .quantity-btn:hover {
+      background: #e6e9df;
+    }
+
+    .cart-item-details {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .cart-item-subtotal {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
     .cart-total {
       font-size: 23px;
       font-weight: bold;
@@ -332,8 +366,10 @@
       <div class="products">
 
         <article class="product">
-          <img src="./image/product-1.jpg"
+          <img
+           src="./image/product-1.jpg"
           alt="Premium Grooming Kit">
+          
   
 
             <div class="product-info">
@@ -469,14 +505,40 @@
   <script>
     let cart = [];
 
+    const STORE = {
+      whatsappNumber: "8801590056324",
+      facebookPage: "https://www.facebook.com/profile.php?id=61596086092568&sk=directory_links"
+    };
+
     function addToCart(name, price) {
-      cart.push({ name: name, price: price });
+      const existingItem = cart.find(function(item) {
+        return item.name === name;
+      });
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name: name, price: price, quantity: 1 });
+      }
+
       updateCart();
 
       document.getElementById("cart").scrollIntoView({
         behavior: "smooth",
         block: "start"
       });
+    }
+
+    function changeQuantity(index, amount) {
+      if (!cart[index]) return;
+
+      cart[index].quantity += amount;
+
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+
+      updateCart();
     }
 
     function removeFromCart(index) {
@@ -488,110 +550,97 @@
       const items = document.getElementById("cart-items");
       const totalElement = document.getElementById("cart-total");
 
-      document.getElementById("cart-count").textContent = cart.length;
+      const cartCount = cart.reduce(function(sum, item) {
+        return sum + item.quantity;
+      }, 0);
+
+      document.getElementById("cart-count").textContent = cartCount;
 
       if (cart.length === 0) {
         items.textContent = "Your cart is empty.";
       } else {
         items.innerHTML = cart.map(function(item, index) {
+          const itemSubtotal = item.price * item.quantity;
+
           return `
             <div class="cart-row">
-              <span>${item.name} — ৳${item.price.toLocaleString("en-US")}</span>
-              <button class="remove-btn"
-                onclick="removeFromCart(${index})">
-                Remove
-              </button>
+              <div class="cart-item-details">
+                <strong>${item.name}</strong>
+                <span>৳${item.price.toLocaleString("en-US")} each</span>
+                <span class="cart-item-subtotal">
+                  Subtotal: ৳${itemSubtotal.toLocaleString("en-US")}
+                </span>
+              </div>
+
+              <div class="quantity-controls">
+                <button class="quantity-btn"
+                  onclick="changeQuantity(${index}, -1)"
+                  aria-label="Decrease quantity">−</button>
+                <strong>${item.quantity}</strong>
+                <button class="quantity-btn"
+                  onclick="changeQuantity(${index}, 1)"
+                  aria-label="Increase quantity">+</button>
+                <button class="remove-btn"
+                  onclick="removeFromCart(${index})">Remove</button>
+              </div>
             </div>
           `;
         }).join("");
       }
 
       const total = cart.reduce(function(sum, item) {
-        return sum + item.price;
+        return sum + (item.price * item.quantity);
       }, 0);
 
       totalElement.textContent =
         "Total: ৳" + total.toLocaleString("en-US");
     }
 
-    function checkout() {
+    function buildOrderMessage() {
       if (cart.length === 0) {
         alert("Please add a product to your cart first.");
-        return;
+        return null;
       }
 
-      const message = cart.map(function(item) {
-        return item.name + " - ৳" + item.price;
-      }).join("\n");
+      const lines = cart.map(function(item, index) {
+        const itemSubtotal = item.price * item.quantity;
+
+        return (index + 1) + ". " + item.name +
+          " × " + item.quantity +
+          " — Tk " + itemSubtotal.toLocaleString("en-US");
+      });
 
       const total = cart.reduce(function(sum, item) {
-        return sum + item.price;
+        return sum + (item.price * item.quantity);
       }, 0);
 
-      alert(
-        "Your order summary:\n\n" +
-        message +
-        "\n\nTotal: ৳" + total +
-        "\n\nNext, contact the store through its Facebook page."
-      );
-
-      // Messenger will be connected in the next step.
+      return "Hello BlagSheik! I want to place an order.\n\n" +
+        lines.join("\n") +
+        "\n\nTotal: Tk " + total.toLocaleString("en-US") +
+        "\nPlease confirm availability and delivery charges.";
     }
-const STORE = {
-  whatsappNumber: "8801590056324",
-  facebookPage: "https://www.facebook.com/profile.php?id=61596086092568&sk=directory_links"
-};
 
-function buildOrderMessage() {
-  if (cart.length === 0) {
-    alert("Please add a product to your cart first.");
-    return null;
-  }
+    function checkoutWhatsApp() {
+      const message = buildOrderMessage();
+      if (!message) return;
 
-  const lines = cart.map(function(item, index) {
-    return (index + 1) + ". " + item.name +
-      " - Tk " + item.price;
-  });
+      const url = "https://wa.me/" + STORE.whatsappNumber +
+        "?text=" + encodeURIComponent(message);
 
-  const total = cart.reduce(function(sum, item) {
-    return sum + item.price;
-  }, 0);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
 
-  return "Hello BlagSheik! I want to place an order.\n\n" +
-    lines.join("\n") +
-    "\n\nSubtotal: Tk " + total +
-    "\nPlease confirm availability and delivery charges.";
-}
+    function checkoutMessenger() {
+      const message = buildOrderMessage();
+      if (!message) return;
 
-function checkoutWhatsApp() {
-  const message = buildOrderMessage();
+      window.open(STORE.facebookPage, "_blank", "noopener,noreferrer");
 
-  if (!message) return;
-
-  const url = "https://wa.me/" + STORE.whatsappNumber +
-    "?text=" + encodeURIComponent(message);
-
-  window.open(url, "_blank", "noopener,noreferrer");
-}
-
-function checkoutMessenger() {
-  if (cart.length === 0) {
-    alert("Please add a product to your cart first.");
-    return;
-  }
-
-  window.open(
-    STORE.facebookPage,
-    "_blank",
-    "noopener,noreferrer"
-  );
-
-  alert(
-    "Your cart is ready. In Messenger, send the store " +
-    "your product names and total from your cart."
-  );
-}
-
+      alert(
+        "Your order summary is ready. Please paste this message into Messenger:\n\n" +
+        message
+      );
+    }
   </script>
 
 </body>
