@@ -104,10 +104,69 @@
         Ordering: WhatsApp or Messenger
       </p>
 
-      <a class="btn" href="../index.html#products">
-        Back to Products
-      </a>
+      <button class="btn" onclick="addToCart('Premium Grooming Kit', 1299)">
+  Add to Cart
+</button>
+
+<a class="btn back-btn" href="../index.html#products">
+  Back to Products
+</a>
+
+<p id="cart-message" aria-live="polite"></p>
+
+     
     </div>
   </main>
+  
+
+  <script>
+  const CART_KEY = "blagsheik-cart";
+
+  function addToCart(name, price) {
+    let cart = [];
+
+    try {
+      const savedCart = localStorage.getItem(CART_KEY);
+      if (savedCart) {
+        const parsedCart = JSON.parse(savedCart);
+        if (Array.isArray(parsedCart)) {
+          cart = parsedCart.filter(function(item) {
+            return item &&
+              typeof item.name === "string" &&
+              Number(item.price) > 0 &&
+              Number(item.quantity) > 0;
+          }).map(function(item) {
+            return {
+              name: item.name,
+              price: Number(item.price),
+              quantity: Number(item.quantity)
+            };
+          });
+        }
+      }
+    } catch (error) {
+      cart = [];
+    }
+
+    const existingItem = cart.find(function(item) {
+      return item.name === name;
+    });
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({
+        name: name,
+        price: price,
+        quantity: 1
+      });
+    }
+
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+    document.getElementById("cart-message").textContent =
+      "Added to cart successfully! Go to the homepage to view your cart.";
+  }
+</script>
 </body>
 </html>
