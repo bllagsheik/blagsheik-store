@@ -1,0 +1,188 @@
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Watch with Bluetooth Calling | BlagSheik</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f5ef;
+      color: #222923;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #173d31;
+      color: white;
+      padding: 18px 6%;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .product-details {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      background: white;
+      border-radius: 14px;
+    }
+
+    .product-details img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+      background: #f5f5f5;
+    }
+
+    .price {
+      color: #287453;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 6px 6px 6px 0;
+      background: #287453;
+      color: white;
+      border: 0;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .back-btn {
+      background: #173d31;
+    }
+
+    @media (max-width: 650px) {
+      .product-details {
+        grid-template-columns: 1fr;
+        margin: 20px;
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="../index.html">← Back to BlagSheik</a>
+  </header>
+
+  <main class="product-details">
+    <img src="../image/product-2.jpg"
+         alt="Smart Watch with Bluetooth Calling - Premium Gold Edition">
+
+    <div>
+      <h1>Smart Watch with Bluetooth Calling – Premium Gold Edition</h1>
+
+      <p class="price">৳1,599</p>
+
+      <h3>Product Description</h3>
+      <p>
+        Upgrade your everyday style with this premium gold-edition smart watch.
+        Designed for a modern look, it is suitable for daily wear, work,
+        and casual outings.
+      </p>
+      <p>
+        Bluetooth calling and other features depend on the exact model.
+        Please confirm the included features, compatibility, and specifications
+        with the seller before ordering.
+      </p>
+
+      <h3>Product Information</h3>
+      <p>
+        Product: Smart Watch with Bluetooth Calling – Premium Gold Edition<br>
+        Price: ৳1,599<br>
+        Ordering: WhatsApp or Messenger
+      </p>
+
+      <button class="btn" onclick="addToCart('Smart Watch with Bluetooth Calling – Premium Gold Edition', 1599)">
+        Add to Cart
+      </button>
+
+      <p id="cart-message" aria-live="polite"></p>
+
+      <a class="btn back-btn" href="../index.html#cart">
+        View Cart
+      </a>
+
+      <a class="btn back-btn" href="../index.html#products">
+        Continue Shopping
+      </a>
+    </div>
+  </main>
+
+  <script>
+    const CART_KEY = "blagsheik-cart";
+
+    function addToCart(name, price) {
+      let cart = [];
+
+      try {
+        const savedCart = localStorage.getItem(CART_KEY);
+
+        if (savedCart) {
+          const parsedCart = JSON.parse(savedCart);
+
+          if (Array.isArray(parsedCart)) {
+            cart = parsedCart.filter(function(item) {
+              return item &&
+                typeof item.name === "string" &&
+                Number(item.price) > 0 &&
+                Number(item.quantity) > 0;
+            }).map(function(item) {
+              return {
+                name: item.name,
+                price: Number(item.price),
+                quantity: Number(item.quantity)
+              };
+            });
+          }
+        }
+      } catch (error) {
+        cart = [];
+      }
+
+      const existingItem = cart.find(function(item) {
+        return item.name === name;
+      });
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          name: name,
+          price: price,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+      document.getElementById("cart-message").textContent =
+        "Added to cart successfully! Go to the homepage to view your cart.";
+    }
+  </script>
+</body>
+</html>
+```
