@@ -323,16 +323,67 @@
       margin-top: 55px;
     }
 
-    footer {
-      background: var(--green);
-      color: white;
-      text-align: center;
-      padding: 28px 15px;
-    }
+    
+/* PREMIUM FOOTER */
 
-    footer a {
-      color: #b6d9bf;
-    }
+footer {
+  background: #211f1a;
+  color: #f7f3eb;
+  padding: 48px 6% 20px;
+  margin-top: 60px;
+}
+
+.footer-inner {
+  max-width: 1150px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 35px;
+}
+
+.footer-brand h2 {
+  color: #d0aa65;
+  font-size: 28px;
+  margin: 0 0 12px;
+  letter-spacing: 1px;
+}
+
+.footer-brand p,
+.footer-column p {
+  color: #c8c1b4;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footer-column h3 {
+  color: #d0aa65;
+  font-size: 16px;
+  margin: 0 0 15px;
+}
+
+.footer-column a {
+  display: block;
+  color: #e8e1d5;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.footer-column a:hover {
+  color: #d0aa65;
+}
+
+.footer-bottom {
+  max-width: 1150px;
+  margin: 35px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid #484239;
+  text-align: center;
+  color: #aaa294;
+  font-size: 13px;
+}
+
+
 
     @media (max-width: 850px) {
       .products {
@@ -405,50 +456,98 @@
   margin: 0 8px 10px 0;
 }
 
-    .trust-section {
-  padding: 35px 20px;
-  margin: 30px auto;
-  max-width: 1100px;
+    
+/* PREMIUM TRUST SECTION */
+
+.trust-section {
+  max-width: 1150px;
+  margin: 65px auto;
+  padding: 55px 25px;
   text-align: center;
-  background: #f8f6f1;
-  border-radius: 12px;
+  background: #f1eadc;
+  border: 1px solid #e7dcc8;
+  border-radius: 18px;
 }
 
 .trust-section h2 {
-  color: #1f2937;
-  margin-bottom: 22px;
+  color: #25221c;
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+
+.trust-section > p {
+  color: #777168;
+  margin-bottom: 30px;
 }
 
 .trust-items {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
 
 .trust-item {
-  padding: 18px;
+  padding: 25px 18px;
   background: #ffffff;
-  border: 1px solid #e8e1d5;
-  border-radius: 10px;
+  border: 1px solid #e8dfcf;
+  border-radius: 14px;
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.trust-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(35, 28, 15, 0.08);
 }
 
 .trust-item h3 {
-  color: #9a742c;
-  margin-bottom: 8px;
+  color: #a47b35;
+  font-size: 18px;
+  margin: 0 0 10px;
 }
 
 .trust-item p {
-  color: #555555;
+  color: #777168;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
+  margin: 0;
 }
+
 
 @media (max-width: 650px) {
   .trust-items {
     grid-template-columns: 1fr;
   }
 }
+
+
     
+/* TRUST SECTION AND FOOTER RESPONSIVE */
+
+@media (max-width: 650px) {
+  .trust-section {
+    margin: 40px 15px;
+    padding: 35px 18px;
+  }
+
+  .trust-section h2 {
+    font-size: 25px;
+  }
+
+  .trust-items {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  footer {
+    padding: 35px 22px 18px;
+  }
+}
+ 
     
   </style>
 </head>
@@ -714,40 +813,95 @@
   </p>
 </section>
 
-    
 
     
+<section class="trust-section">
+  <div class="eyebrow">The BlagSheik Promise</div>
 
-
-    <section class="trust-section">
   <h2>Shop with Confidence</h2>
 
+  <p>
+    A better shopping experience starts with trust,
+    transparency, and customer care.
+  </p>
+
   <div class="trust-items">
+
     <div class="trust-item">
       <h3>Genuine Products</h3>
-      <p>We focus on authentic products you can trust.</p>
+      <p>
+        We aim to offer genuine products with clear
+        and honest product information.
+      </p>
     </div>
 
     <div class="trust-item">
       <h3>Easy Ordering</h3>
-      <p>Place your order through WhatsApp or Messenger.</p>
+      <p>
+        Place your order conveniently through
+        WhatsApp or Facebook Messenger.
+      </p>
     </div>
 
     <div class="trust-item">
       <h3>Customer Support</h3>
-      <p>Contact us if you need help with your order.</p>
+      <p>
+        Have a question? Contact us for product
+        information and order assistance.
+      </p>
     </div>
+
   </div>
 </section>
+
+
+
     
   </main>
 
-  <footer>
-    <h2>BlagSheik</h2>
-    <p>Quality Products. Shop with Confidence.</p>
-    <p>Contact us through our Facebook page.</p>
-    <p>&copy; 2026 BlagSheik. All rights reserved.</p>
-  </footer>
+  
+<footer>
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <h2>BlagSheik</h2>
+      <p>
+        Quality Products. Better Everyday Living.
+      </p>
+      <p>
+        Discover thoughtfully selected products
+        and shop with confidence.
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <a href="#">Home</a>
+      <a href="#products">Our Products</a>
+      <a href="#cart">Shopping Cart</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+      <a href="https://wa.me/8801590056324"
+         target="_blank" rel="noopener noreferrer">
+        WhatsApp
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61596086092568&sk=directory_links"
+         target="_blank" rel="noopener noreferrer">
+        Facebook Page
+      </a>
+      <p>We're happy to assist you with your orders.</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2026 BlagSheik. All rights reserved.
+  </div>
+</footer>
+
+
 
   <script>
     const CART_KEY = "blagsheik-cart";
