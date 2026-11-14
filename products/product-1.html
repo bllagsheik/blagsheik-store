@@ -19,10 +19,43 @@
     }
 
     header {
-      background: #173d31;
+      background: #101010;
       color: white;
-      padding: 18px 6%;
+      padding: 12px 6%;
+      border-bottom: 1px solid #b18a45;
     }
+
+    .site-header-inner {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 210px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .back-home {
+      color: #f5e7c8;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .back-home:hover { color: #d9a441; }
+
+    @media (max-width: 480px) {
+      .brand-logo { width: 165px; }
+      .site-header-inner { gap: 8px; }
+      .back-home { font-size: 13px; }
+    }
+
 
     header a {
       color: white;
@@ -78,7 +111,10 @@
 
 <body>
   <header>
-    <a href="../index.html">← Back to BlagSheik</a>
+    <div class="site-header-inner">
+      <a href="../index.html" class="site-brand" aria-label="Back to BlagSheik home"><img src="../image/logo.svg" alt="BlagSheik" class="brand-logo"></a>
+      <a href="../index.html" class="back-home">← Back to Store</a>
+    </div>
   </header>
 
   <main class="product-details">
