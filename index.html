@@ -30,9 +30,10 @@
     }
 
     header {
-      background: var(--green);
+      background: #101010;
       color: white;
-      padding: 22px 6%;
+      padding: 14px 6%;
+      border-bottom: 1px solid #b18a45;
     }
 
     .topbar {
@@ -44,14 +45,11 @@
       gap: 20px;
     }
 
-    .brand {
-      font-size: 27px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    .brand span {
-      color: #b6d9bf;
+    .brand-logo {
+      display: block;
+      width: 230px;
+      max-width: 100%;
+      height: auto;
     }
 
     nav {
@@ -61,12 +59,12 @@
     }
 
     nav a {
-      color: white;
+      color: #f5e7c8;
       text-decoration: none;
     }
 
     nav a:hover {
-      color: #b6d9bf;
+      color: #d9a441;
     }
 
     .hero {
@@ -402,6 +400,11 @@ footer {
     @media (max-width: 480px) {
       .topbar {
         flex-direction: column;
+        gap: 12px;
+      }
+
+      .brand-logo {
+        width: 205px;
       }
 
       nav {
@@ -625,7 +628,7 @@ footer {
 
   <header>
     <div class="topbar">
-      <div class="brand">Blag<span>Sheik</span></div>
+      <a href="./index.html" aria-label="BlagSheik Home"><img src="./image/logo.svg" alt="BlagSheik - Your Style. Your World." class="brand-logo"></a>
 
       <nav>
         <a href="#">Home</a>
