@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" role="img" aria-labelledby="title desc">
   <title id="title">BlagSheik</title>
-  <desc id="desc">BlagSheik navy blue and gold ecommerce logo with a BS monogram and shopping cart.</desc>
+  <desc id="desc">BlagSheik ecommerce logo with a clear ivory and gold BS monogram and wordmark for dark backgrounds.</desc>
   <defs>
     <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f4c76b"/>
-      <stop offset=".52" stop-color="#d99b2b"/>
-      <stop offset="1" stop-color="#a96f16"/>
+      <stop offset="0" stop-color="#ffe09a"/>
+      <stop offset=".52" stop-color="#e0aa43"/>
+      <stop offset="1" stop-color="#bd8122"/>
     </linearGradient>
   </defs>
   <g transform="translate(14 14)">
-    <path d="M34 8h59c36 0 55 16 55 43 0 19-11 32-29 38 24 5 38 20 38 43 0 32-25 52-66 52H34V8zm39 30v42h19c16 0 24-8 24-22 0-13-8-20-24-20H73zm0 70v43h24c18 0 28-7 28-21s-10-22-29-22H73z" fill="#123b69"/>
+    <path d="M34 8h59c36 0 55 16 55 43 0 19-11 32-29 38 24 5 38 20 38 43 0 32-25 52-66 52H34V8zm39 30v42h19c16 0 24-8 24-22 0-13-8-20-24-20H73zm0 70v43h24c18 0 28-7 28-21s-10-22-29-22H73z" fill="#f7f1e5"/>
     <path d="M17 130c34-30 74-52 132-73-23 27-47 52-78 75-20 15-34 28-42 43 1-17-3-31-12-45z" fill="url(#gold)"/>
-    <g transform="translate(83 128)" fill="none" stroke="#123b69" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(83 128)" fill="none" stroke="#f7f1e5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
       <path d="M0 0h12l10 38h53l13-28H18"/>
-      <circle cx="32" cy="53" r="5" fill="#123b69" stroke="none"/>
-      <circle cx="69" cy="53" r="5" fill="#123b69" stroke="none"/>
+      <circle cx="32" cy="53" r="5" fill="#f7f1e5" stroke="none"/>
+      <circle cx="69" cy="53" r="5" fill="#f7f1e5" stroke="none"/>
     </g>
   </g>
   <g transform="translate(245 0)">
-    <text x="0" y="119" font-family="Arial, Helvetica, sans-serif" font-size="91" font-weight="700" letter-spacing="-4" fill="#123b69">Blag</text>
+    <text x="0" y="119" font-family="Arial, Helvetica, sans-serif" font-size="91" font-weight="700" letter-spacing="-4" fill="#f7f1e5">Blag</text>
     <text x="190" y="119" font-family="Arial, Helvetica, sans-serif" font-size="91" font-weight="700" letter-spacing="-4" fill="url(#gold)">Sheik</text>
     <path d="M3 145H604" stroke="url(#gold)" stroke-width="2"/>
-    <text x="4" y="181" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="5.5" fill="#123b69">YOUR STYLE. YOUR WORLD.</text>
+    <text x="4" y="181" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="5.5" fill="#e9dcc2">YOUR STYLE. YOUR WORLD.</text>
   </g>
 </svg>
