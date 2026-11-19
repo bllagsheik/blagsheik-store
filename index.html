@@ -704,6 +704,58 @@ footer {
 
  
     
+
+    /* HOMEPAGE PREMIUM FINISH */
+    html { scroll-behavior: smooth; }
+    body { background: #faf9f6; }
+    header { position: sticky; top: 0; z-index: 20; box-shadow: 0 3px 14px rgba(35, 28, 15, .045); }
+    nav a { font-size: 14px; font-weight: 700; padding: 9px 12px; border-radius: 7px; transition: background .2s ease, color .2s ease; }
+    nav a:hover { color: #173d31; background: #e9e2d3; }
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(115deg, #f1eadc 0%, #e6e9df 100%);
+      border: 1px solid #e5dccb;
+      box-shadow: 0 12px 32px rgba(35, 28, 15, .055);
+    }
+    .hero h1 { color: #25221c; letter-spacing: -.8px; }
+    .hero p { font-size: 16px; line-height: 1.8; }
+    .hero img { box-shadow: 0 10px 26px rgba(35, 28, 15, .12); }
+    .btn { background: #173d31; border: 1px solid #b18a45; border-radius: 8px; transition: background .2s ease, transform .2s ease; }
+    .btn:hover { background: #a47b35; transform: translateY(-1px); }
+    .section { margin-top: 68px; margin-bottom: 68px; }
+    .section-heading h2 { color: #25221c; letter-spacing: -.4px; }
+    .section-heading p { margin-top: 6px; }
+    .product-tools { margin-bottom: 12px; }
+    .product { box-shadow: 0 6px 20px rgba(35, 28, 15, .055); }
+    .product:focus-within { outline: 2px solid #b18a45; outline-offset: 3px; }
+    #cart {
+      background: #fff;
+      border: 1px solid #e8dfcf;
+      border-radius: 18px;
+      box-shadow: 0 8px 26px rgba(35, 28, 15, .05);
+      padding: 30px;
+    }
+    #cart h3 { color: #25221c; }
+    .cart-row { padding: 16px 4px; border-bottom-color: #eee8dd; }
+    .quantity-btn { border-color: #d8cbb5; }
+    .checkout-form input, .checkout-form textarea { border-color: #d8cbb5; }
+    .trust-section { box-shadow: 0 8px 26px rgba(35, 28, 15, .04); }
+    footer { border-top: 2px solid #b18a45; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid #a47b35;
+      outline-offset: 3px;
+    }
+    @media (max-width: 650px) {
+      header { position: relative; }
+      .hero { margin: 18px 14px; padding: 32px 22px; gap: 22px; }
+      .hero h1 { font-size: clamp(30px, 8vw, 40px); }
+      .section { margin-top: 44px; margin-bottom: 44px; }
+      .section-heading h2 { font-size: 27px; }
+      #cart { padding: 20px 16px; }
+      .cart-row { align-items: flex-start; flex-direction: column; }
+      .quantity-controls { width: 100%; }
+    }
+
   </style>
 </head>
 
