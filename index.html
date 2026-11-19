@@ -149,6 +149,56 @@
       gap: 20px;
     }
 
+    .product-tools {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      gap: 12px;
+      max-width: 760px;
+      margin: 0 auto 10px;
+    }
+
+    .product-tools input,
+    .product-tools select {
+      width: 100%;
+      min-width: 0;
+      padding: 13px 15px;
+      border: 1px solid #d8cbb5;
+      border-radius: 9px;
+      background: #fff;
+      color: #25221c;
+      font: inherit;
+    }
+
+    .product-tools input:focus,
+    .product-tools select:focus {
+      outline: 2px solid #287453;
+      border-color: #287453;
+    }
+
+    .product-results {
+      text-align: center;
+      color: #777168;
+      font-size: 13px;
+      margin: 0 0 22px;
+    }
+
+    .product-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 35px 15px;
+      color: #777168;
+      background: #fff;
+      border: 1px dashed #d8cbb5;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .product-tools {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+    }
+
 
     
 /* PREMIUM PRODUCT CARDS */
@@ -688,9 +738,27 @@ footer {
         <p>Explore our collection and find something you love.</p>
       </div>
 
+      <div class="product-tools">
+        <input
+          type="search"
+          id="product-search"
+          placeholder="Search products..."
+          aria-label="Search products">
+        <select id="product-category" aria-label="Filter products by category">
+          <option value="all">All Categories</option>
+          <option value="grooming">Grooming</option>
+          <option value="watches">Watches</option>
+          <option value="bags">Bags</option>
+          <option value="home">Home & Kitchen</option>
+          <option value="fashion">Fashion</option>
+          <option value="accessories">Accessories</option>
+        </select>
+      </div>
+      <p class="product-results" id="product-results" aria-live="polite">Showing all products</p>
+
       <div class="products">
 
-       <article class="product">
+       <article class="product" data-category="grooming">
   <a href="./products/product-1.html" class="product-link">
     <img src="./image/product-1.jpg"
           alt="Premium Grooming Kit">
@@ -711,7 +779,7 @@ footer {
 </article>
         
 
-        <article class="product">
+        <article class="product" data-category="watches">
   <a href="./products/product-2.html" class="product-link">
     <img src="./image/product-2.jpg"
          alt="Smart Watch with Bluetooth Calling - Premium Gold Edition">
@@ -736,7 +804,7 @@ footer {
 </article>
 
 
-        <article class="product">
+        <article class="product" data-category="bags">
   <a href="./products/product-3.html" class="product-link">
     <img src="./image/product-3.jpg"
          alt="Elegant Women's White Handbag – Timeless Style & Sophistication">
@@ -760,7 +828,7 @@ footer {
   </div>
 </article>
 
-        <article class="product">
+        <article class="product" data-category="home">
   <a href="./products/product-4.html" class="product-link">
     <img src="./image/product-4.jpg"
          alt="1.8L Multifunctional Electric Cooking Pot">
@@ -787,7 +855,7 @@ footer {
 
         
         
-        <article class="product">
+        <article class="product" data-category="accessories">
           <img
             src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
             alt="Wireless headphones">
@@ -805,7 +873,7 @@ footer {
           </div>
         </article>
 
-        <article class="product">
+        <article class="product" data-category="watches">
           <img
             src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
             alt="Wristwatch">
@@ -823,7 +891,7 @@ footer {
           </div>
         </article>
 
-        <article class="product">
+        <article class="product" data-category="fashion">
           <img
             src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
             alt="Red sports shoe">
@@ -841,7 +909,7 @@ footer {
           </div>
         </article>
 
-        <article class="product">
+        <article class="product" data-category="bags">
           <img
             src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80"
             alt="Fashion handbag">
@@ -1185,6 +1253,45 @@ function buildOrderMessage() {
         message
       );
     }
+
+    function filterProducts() {
+      const searchTerm = document.getElementById("product-search").value
+        .trim().toLowerCase();
+      const selectedCategory = document.getElementById("product-category").value;
+      const productCards = document.querySelectorAll("#products .product");
+      let visibleCount = 0;
+
+      productCards.forEach(function(card) {
+        const searchableText = card.textContent.toLowerCase();
+        const matchesSearch = searchableText.includes(searchTerm);
+        const matchesCategory = selectedCategory === "all" ||
+          card.dataset.category === selectedCategory;
+        const shouldShow = matchesSearch && matchesCategory;
+
+        card.hidden = !shouldShow;
+        if (shouldShow) visibleCount += 1;
+      });
+
+      document.getElementById("product-results").textContent =
+        "Showing " + visibleCount + " of " + productCards.length + " products";
+
+      let emptyMessage = document.getElementById("product-empty");
+      if (visibleCount === 0) {
+        if (!emptyMessage) {
+          emptyMessage = document.createElement("p");
+          emptyMessage.id = "product-empty";
+          emptyMessage.className = "product-empty";
+          emptyMessage.textContent = "No products found. Try another search or category.";
+          document.querySelector("#products .products").appendChild(emptyMessage);
+        }
+      } else if (emptyMessage) {
+        emptyMessage.remove();
+      }
+    }
+
+    document.getElementById("product-search").addEventListener("input", filterProducts);
+    document.getElementById("product-category").addEventListener("change", filterProducts);
+    filterProducts();
 
     updateCart();
   </script>
