@@ -900,7 +900,7 @@ footer {
     <div class="price">৳1,849</div>
 
     <button class="btn"
-      onclick="addToCart('Elegant Women's White Handbag – Timeless Style & Sophistication', 1849)">
+      onclick="addHandbagToCart()">
       Add to Cart
     </button>
   </div>
@@ -1115,6 +1115,10 @@ footer {
     }
 
     cart = loadCart();
+
+    function addHandbagToCart() {
+      addToCart("Elegant Women's White Handbag – Timeless Style & Sophistication", 1849);
+    }
 
     function addToCart(name, price) {
       const existingItem = cart.find(function(item) {
