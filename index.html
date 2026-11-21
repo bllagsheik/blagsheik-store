@@ -770,6 +770,19 @@ footer {
       letter-spacing: .2px;
     }
 
+    .order-status {
+      display: none;
+      margin: 14px 0 0;
+      padding: 14px 16px;
+      border: 1px solid #cbdccf;
+      border-radius: 10px;
+      background: #f1f7f1;
+      color: #234b38;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .order-status.visible { display: block; }
+
     /* How to Order section */
     .how-to-order {
       margin: 42px auto;
@@ -1051,9 +1064,10 @@ footer {
   </button>
 
   <p class="notice">
-    Product prices are examples. Confirm prices and delivery
-    charges with the seller before placing an order.
+    Your order is a request until BlagSheik confirms product availability,
+    final price and delivery charges. Delivery charges are separate.
   </p>
+  <p id="order-status" class="order-status" role="status" aria-live="polite"></p>
 </section>
 
 
@@ -1366,17 +1380,27 @@ function buildOrderMessage() {
       const url = "https://wa.me/" + STORE.whatsappNumber +
         "?text=" + encodeURIComponent(message);
 
-      window.open(url, "_blank", "noopener,noreferrer");
+      const orderWindow = window.open(url, "_blank", "noopener,noreferrer");
+      const status = document.getElementById("order-status");
+      status.textContent = orderWindow
+        ? "WhatsApp has opened with your order details. Please review the message and tap Send in WhatsApp. Your order is not confirmed until BlagSheik replies with availability and delivery details."
+        : "Your browser blocked the WhatsApp window. Please allow pop-ups for this site and try again. Your order has not been sent.";
+      status.classList.add("visible");
     }
 
     function checkoutMessenger() {
       const message = buildOrderMessage();
       if (!message) return;
 
-      window.open(STORE.facebookPage, "_blank", "noopener,noreferrer");
+      const messengerWindow = window.open(STORE.facebookPage, "_blank", "noopener,noreferrer");
+      const status = document.getElementById("order-status");
+      status.textContent = messengerWindow
+        ? "Your order summary is ready below. Copy it into your Messenger conversation and tap Send. Your order is not confirmed until BlagSheik replies with availability and delivery details."
+        : "Your browser blocked the Messenger window. Please allow pop-ups for this site and try again. Your order has not been sent.";
+      status.classList.add("visible");
 
       alert(
-        "Your order summary is ready. Please paste this message into Messenger:\n\n" +
+        "Copy this order summary, then paste it into your BlagSheik Messenger chat and tap Send:\n\n" +
         message
       );
     }
