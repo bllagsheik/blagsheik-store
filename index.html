@@ -1024,6 +1024,48 @@ footer {
       .feedback-section h2 { font-size: 25px; }
     }
 
+  
+    /* FREQUENTLY ASKED QUESTIONS */
+    .faq-section {
+      max-width: 900px;
+      margin: 58px auto;
+      padding: 0 24px;
+    }
+    .faq-section .section-heading { text-align: center; margin-bottom: 24px; }
+    .faq-list { display: grid; gap: 12px; }
+    .faq-item {
+      background: #fff;
+      border: 1px solid #e8dfcf;
+      border-radius: 12px;
+      padding: 0 18px;
+      box-shadow: 0 5px 18px rgba(35, 28, 15, .035);
+    }
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 18px 28px 18px 0;
+      color: #25221c;
+      font-weight: 600;
+      position: relative;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      right: 2px;
+      top: 13px;
+      color: #a77b35;
+      font-size: 23px;
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p { margin: 0 0 18px; color: #6c756f; line-height: 1.7; }
+    .faq-contact { text-align: center; margin-top: 22px; color: #6c756f; }
+    @media (max-width: 600px) {
+      .faq-section { margin: 40px auto; padding: 0 14px; }
+      .faq-item { padding: 0 14px; }
+      .faq-item summary { font-size: 15px; }
+    }
+
   </style>
 </head>
 
@@ -1405,6 +1447,54 @@ footer {
   </div>
 </section>
 
+
+<section class="faq-section" id="faq" aria-labelledby="faq-title">
+  <div class="section-heading">
+    <div class="eyebrow">Helpful Information</div>
+    <h2 id="faq-title">Frequently Asked Questions</h2>
+    <p>Quick answers to common questions about shopping with BlagSheik.</p>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How can I place an order?</summary>
+      <p>Choose a product, add it to your cart, enter your contact and delivery details, select a payment method, then send your order through WhatsApp or Messenger. We will reply to confirm availability and delivery details.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Which payment methods are available?</summary>
+      <p>You can choose Cash on Delivery (COD) or bKash Personal. For bKash, please confirm the payable amount and instructions with BlagSheik before sending payment, then share your TrxID for verification.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How much is the delivery charge?</summary>
+      <p>Delivery charges are separate from product prices. The applicable charge will be confirmed with you before your order is dispatched.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How long does delivery take?</summary>
+      <p>Delivery timing can depend on your location and product availability. Please contact us when ordering so we can confirm the expected delivery time for your address.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Is my order confirmed as soon as I send it?</summary>
+      <p>No. Sending an order creates an order request. Your order is confirmed only after BlagSheik replies and confirms product availability, final price, and delivery details.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>How can I ask about a product?</summary>
+      <p>Contact us through WhatsApp or our Facebook Page before ordering. We can help with product information and availability.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Can I share feedback after purchasing?</summary>
+      <p>Yes. Use the Customer Feedback section to send us your experience through WhatsApp. We will only publish your review with your permission.</p>
+    </details>
+  </div>
+
+  <p class="faq-contact">Still have a question? <a href="https://wa.me/8801590056324" target="_blank" rel="noopener noreferrer">Contact BlagSheik on WhatsApp</a>.</p>
+</section>
+
 </main>
 
   
@@ -1427,6 +1517,7 @@ footer {
       <a href="#">Home</a>
       <a href="#products">Our Products</a>
       <a href="#cart">Shopping Cart</a>
+      <a href="#faq">Frequently Asked Questions</a>
     </div>
 
     <div class="footer-column">
