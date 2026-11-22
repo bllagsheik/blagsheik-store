@@ -48,7 +48,7 @@
     <section aria-labelledby="product-title">
       <div class="eyebrow">BlagSheik Grooming Collection</div>
       <h1 id="product-title">HTC AT-538 Professional Hair Trimmer</h1>
-      <p class="price">Price: Contact for Price</p>
+      <p class="price">৳699</p>
       <span class="stock-badge" aria-label="In stock">In Stock</span>
       <p class="description">Precision grooming. Sharp style. Everyday confidence. The HTC AT-538 is designed for convenient everyday grooming, with a precision T-blade and guide combs to help you trim and style your hair.</p>
       <div class="info-panel">
@@ -95,12 +95,49 @@
         <p>Delivery across Bangladesh where available. Delivery charges are separate and confirmed before dispatch.</p>
       </div>
       <div class="actions">
-        <a class="btn" href="https://wa.me/8801590056324?text=Hello%20BlagSheik%2C%20I%20am%20interested%20in%20the%20HTC%20AT-538%20Professional%20Hair%20Trimmer.%20Please%20confirm%20the%20price%20and%20availability." target="_blank" rel="noopener noreferrer">Ask Price on WhatsApp</a>
-        <a class="btn" href="../index.html#products">Continue Shopping</a>
+        <button class="btn" type="button" onclick="addToCart('HTC AT-538 Professional Hair Trimmer', 699)">Add to Cart</button>
+        <a class="btn secondary" href="../index.html#cart">View Cart</a>
+        <a class="btn secondary" href="../index.html#products">Continue Shopping</a>
       </div>
-      <p class="small-note">Please contact us to confirm current price and availability before ordering.</p>
+      <p id="cart-message" aria-live="polite"></p>
+      <p class="small-note">Listed price: ৳699. Your order will be confirmed after BlagSheik verifies availability and delivery details.</p>
     </section>
   </main>
   <footer>© 2026 BlagSheik. All rights reserved.</footer>
+  <script>
+    const CART_KEY = "blagsheik-cart";
+
+    function addToCart(name, price) {
+      let cart = [];
+      try {
+        const savedCart = localStorage.getItem(CART_KEY);
+        if (savedCart) {
+          const parsedCart = JSON.parse(savedCart);
+          if (Array.isArray(parsedCart)) {
+            cart = parsedCart.filter(function(item) {
+              return item && typeof item.name === "string" &&
+                Number(item.price) > 0 && Number(item.quantity) > 0;
+            }).map(function(item) {
+              return { name: item.name, price: Number(item.price), quantity: Number(item.quantity) };
+            });
+          }
+        }
+      } catch (error) {
+        cart = [];
+      }
+
+      const existingItem = cart.find(function(item) { return item.name === name; });
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name: name, price: price, quantity: 1 });
+      }
+
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      document.getElementById("cart-message").textContent =
+        "Added to cart! Visit the homepage to review your cart and place your order.";
+    }
+  </script>
+
 </body>
 </html>
