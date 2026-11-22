@@ -517,7 +517,8 @@ footer {
 }
 
 .checkout-form input,
-.checkout-form textarea {
+.checkout-form textarea,
+.checkout-form select {
   width: 100%;
   padding: 12px;
   border: 1px solid #d8ded8;
@@ -527,7 +528,8 @@ footer {
 }
 
 .checkout-form input:focus,
-.checkout-form textarea:focus {
+.checkout-form textarea:focus,
+.checkout-form select:focus {
   outline: 2px solid var(--accent);
   border-color: var(--accent);
 }
@@ -738,7 +740,7 @@ footer {
     #cart h3 { color: #25221c; }
     .cart-row { padding: 16px 4px; border-bottom-color: #eee8dd; }
     .quantity-btn { border-color: #d8cbb5; }
-    .checkout-form input, .checkout-form textarea { border-color: #d8cbb5; }
+    .checkout-form input, .checkout-form textarea, .checkout-form select { border-color: #d8cbb5; }
     .trust-section { box-shadow: 0 8px 26px rgba(35, 28, 15, .04); }
     footer { border-top: 2px solid #b18a45; }
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
@@ -1069,6 +1071,12 @@ footer {
     <textarea id="customer-address"
       placeholder="House, road, area, city"
       rows="3" required></textarea>
+
+    <label for="payment-method">Payment Method</label>
+    <select id="payment-method" required>
+      <option value="Cash on Delivery (COD)">Cash on Delivery (Pay when you receive your order)</option>
+      <option value="bKash Personal">bKash Personal (01590-056324)</option>
+    </select>
   </div>
 
   <button class="btn" onclick="checkoutWhatsApp()">
@@ -1376,9 +1384,10 @@ function buildOrderMessage() {
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
   const address = document.getElementById("customer-address").value.trim();
+  const paymentMethod = document.getElementById("payment-method").value;
 
-  if (!name || !phone || !address) {
-    alert("Please fill in your name, phone number, and delivery address.");
+  if (!name || !phone || !address || !paymentMethod) {
+    alert("Please fill in your name, phone number, delivery address, and payment method.");
     return null;
   }
 
@@ -1398,9 +1407,13 @@ function buildOrderMessage() {
     "Customer Details:\n" +
     "Name: " + name + "\n" +
     "Phone: " + phone + "\n" +
-    "Delivery Address: " + address + "\n\n" +
+    "Delivery Address: " + address + "\n" +
+    "Payment Method: " + paymentMethod + "\n\n" +
     "Order Items:\n" + lines.join("\n") +
     "\n\nTotal: Tk " + total.toLocaleString("en-US") +
+    (paymentMethod === "bKash Personal"
+      ? "\nPayment number: 01590-056324 (Personal)\nPlease confirm the payable amount before sending bKash payment. Share the TrxID after payment."
+      : "\nPayment: Pay when you receive the order (COD).") +
     "\nPlease confirm availability and delivery charges.";
 }
 
