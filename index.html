@@ -1066,6 +1066,13 @@ footer {
       .faq-item summary { font-size: 15px; }
     }
 
+  
+    /* CUSTOMER TRUST STRIP */
+    .trust-strip { max-width: 1150px; margin: 0 auto 38px; padding: 0 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .trust-item { background: #fff; border: 1px solid #e8dfcf; border-radius: 12px; padding: 15px 12px; text-align: center; color: #173d31; font-weight: 700; font-size: 14px; }
+    .trust-item small { display: block; color: #6c756f; font-weight: 400; font-size: 12px; margin-top: 4px; }
+    @media (max-width: 650px) { .trust-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
   </style>
 </head>
 
@@ -1101,6 +1108,13 @@ footer {
       <img
         src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80"
         alt="Carefully selected fashion products">
+    </section>
+
+    <section class="trust-strip" aria-label="Shopping benefits">
+      <div class="trust-item">Genuine Products<small>Quality-focused selection</small></div>
+      <div class="trust-item">Clear Pricing<small>Prices shown upfront</small></div>
+      <div class="trust-item">Easy Ordering<small>WhatsApp &amp; Messenger</small></div>
+      <div class="trust-item">Payment Options<small>COD or bKash Personal</small></div>
     </section>
 
 
