@@ -800,6 +800,57 @@ footer {
       letter-spacing: .2px;
     }
 
+    /* CONSISTENT PREMIUM PRODUCT CARD FINISH */
+    .product {
+      border: 1px solid #e5dccb;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(35, 28, 15, 0.07);
+    }
+
+    .product img {
+      height: 225px;
+      padding: 14px;
+      object-fit: contain;
+      background: linear-gradient(145deg, #fbfaf6, #f0eee6);
+      border-bottom: 1px solid #eee8dc;
+    }
+
+    .product-info {
+      padding: 17px 18px 19px;
+    }
+
+    .product h3 {
+      letter-spacing: -0.2px;
+    }
+
+    .product .price {
+      padding-top: 10px;
+      border-top: 1px solid #f0ece4;
+    }
+
+    .product .btn {
+      min-height: 46px;
+      box-shadow: 0 3px 9px rgba(37, 34, 28, 0.1);
+    }
+
+    .product .btn:focus-visible,
+    .product-link:focus-visible {
+      outline: 3px solid #b18a45;
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 480px) {
+      .product img {
+        height: 165px;
+        padding: 9px;
+      }
+
+      .product-info {
+        padding: 12px;
+      }
+    }
+
     .order-status {
       display: none;
       margin: 14px 0 0;
