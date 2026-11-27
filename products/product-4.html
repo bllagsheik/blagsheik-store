@@ -72,6 +72,20 @@
       letter-spacing: .2px;
     }
 </style>
+
+  <style>
+    .seo-discovery-links{max-width:1100px;margin:0 auto 34px;padding:0 18px}
+    .seo-discovery-links h2{color:#183d32;margin:0 0 10px;font-size:1.35rem}
+    .seo-discovery-links p{margin:0 0 14px;color:#68736d}
+    .seo-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+    .seo-related-link{display:flex;flex-direction:column;justify-content:space-between;gap:8px;padding:14px;border:1px solid #e8dfcf;border-radius:12px;background:#fff;color:#183d32;text-decoration:none;min-height:86px}
+    .seo-related-link span{font-weight:600;line-height:1.4}.seo-related-link strong{color:#a77b35}
+    .seo-related-link:hover,.seo-related-link:focus-visible{border-color:#a77b35;outline:none}
+    .seo-help-links{margin-top:18px;display:flex;flex-wrap:wrap;gap:14px}
+    .seo-help-links a{color:#183d32;font-weight:600}
+    @media(max-width:480px){.seo-related-grid{grid-template-columns:1fr 1fr}.seo-related-link{padding:11px;min-height:92px}}
+  </style>
+
 </head>
 <body>
   <header>
@@ -140,7 +154,25 @@
         <p class="small-note">Please confirm product availability and details with the seller before ordering.</p>
       </div>
     </section>
-  </main>
+  
+  <section class="seo-discovery-links" aria-labelledby="more-products-title">
+    <h2 id="more-products-title">Explore More at BlagSheik</h2>
+    <p>Discover more products from our collection.</p>
+    <div class="seo-related-grid">
+      <a class="seo-related-link" href="../products/product-1.html"><span>Kemei KM-6330 3-in-1 Grooming Kit</span><strong>৳1,299</strong></a>
+      <a class="seo-related-link" href="../products/product-2.html"><span>Smart Watch with Bluetooth Calling – Premium Gold Edition</span><strong>৳1,599</strong></a>
+      <a class="seo-related-link" href="../products/product-3.html"><span>Elegant Women's White Handbag – Timeless Style & Sophistication</span><strong>৳1,849</strong></a>
+      <a class="seo-related-link" href="../products/product-5.html"><span>HTC AT-538 Professional Hair Trimmer</span><strong>৳699</strong></a>
+    </div>
+    <nav class="seo-help-links" aria-label="Shopping information">
+      <a href="../delivery-shipping.html">Delivery &amp; Shipping</a>
+      <a href="../return-exchange.html">Return &amp; Exchange</a>
+      <a href="../contact.html">Contact BlagSheik</a>
+      <a href="../index.html">Shop All Products</a>
+    </nav>
+  </section>
+
+</main>
 
   <footer>© 2026 BlagSheik. All rights reserved.</footer>
 
