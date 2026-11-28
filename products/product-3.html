@@ -71,17 +71,25 @@
     }
 </style>
 
+  
   <style>
-    .seo-discovery-links{max-width:1100px;margin:0 auto 34px;padding:0 18px}
-    .seo-discovery-links h2{color:#183d32;margin:0 0 10px;font-size:1.35rem}
-    .seo-discovery-links p{margin:0 0 14px;color:#68736d}
-    .seo-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
-    .seo-related-link{display:flex;flex-direction:column;justify-content:space-between;gap:8px;padding:14px;border:1px solid #e8dfcf;border-radius:12px;background:#fff;color:#183d32;text-decoration:none;min-height:86px}
-    .seo-related-link span{font-weight:600;line-height:1.4}.seo-related-link strong{color:#a77b35}
-    .seo-related-link:hover,.seo-related-link:focus-visible{border-color:#a77b35;outline:none}
-    .seo-help-links{margin-top:18px;display:flex;flex-wrap:wrap;gap:14px}
-    .seo-help-links a{color:#183d32;font-weight:600}
-    @media(max-width:480px){.seo-related-grid{grid-template-columns:1fr 1fr}.seo-related-link{padding:11px;min-height:92px}}
+    .seo-discovery-links{max-width:1100px;margin:36px auto 34px;padding:28px 30px;border:1px solid #eadfce;border-radius:20px;background:linear-gradient(145deg,#fbf8f1 0%,#f5efe4 100%);box-shadow:0 12px 28px rgba(32,49,40,.06)}
+    .seo-discovery-links .discovery-kicker{display:flex;align-items:center;gap:9px;margin:0 0 9px;color:#a77b35;font-size:11px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}
+    .seo-discovery-links .discovery-kicker:before{content:'';display:block;width:24px;height:1px;background:#b68a4b}
+    .seo-discovery-links h2{color:#183d32;margin:0 0 8px;font-size:clamp(1.3rem,2vw,1.65rem);letter-spacing:-.4px}
+    .seo-discovery-links .discovery-intro{margin:0 0 20px;color:#69756e;line-height:1.6}
+    .seo-related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .seo-related-link{display:flex;align-items:center;gap:13px;padding:13px;border:1px solid #e9dfd1;border-radius:14px;background:#fff;color:#183d32;text-decoration:none;min-height:106px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+    .seo-related-link:hover,.seo-related-link:focus-visible{border-color:#c29a60;box-shadow:0 7px 18px rgba(39,57,45,.08);transform:translateY(-2px);outline:none}
+    .seo-related-link .related-thumb{width:84px;height:84px;flex:0 0 84px;border-radius:10px;background:#f7f4ed;object-fit:contain;padding:5px}
+    .seo-related-link .related-copy{min-width:0;display:flex;flex-direction:column;gap:6px;flex:1}
+    .seo-related-link .related-name{font-weight:700;line-height:1.35;font-size:14px;color:#183d32}
+    .seo-related-link .related-price{font-weight:800;color:#a8792e;font-size:14px;letter-spacing:.15px}
+    .seo-related-link .related-arrow{align-self:center;color:#a8792e;font-size:20px;margin-left:auto;padding-left:5px}
+    .seo-help-links{margin-top:22px;padding-top:18px;border-top:1px solid #e4d7c5;display:flex;flex-wrap:wrap;gap:9px}
+    .seo-help-links a{display:inline-flex;align-items:center;padding:8px 12px;border:1px solid #d9c8b0;border-radius:999px;background:rgba(255,255,255,.72);color:#21483a;font-weight:650;font-size:13px;text-decoration:none;transition:background .18s ease,border-color .18s ease}
+    .seo-help-links a:hover,.seo-help-links a:focus-visible{background:#fff;border-color:#b68a4b;outline:none}
+    @media(max-width:600px){.seo-discovery-links{margin:28px 12px;padding:20px 16px;border-radius:16px}.seo-related-grid{grid-template-columns:1fr;gap:9px}.seo-related-link{min-height:90px;padding:10px}.seo-related-link .related-thumb{width:72px;height:72px;flex-basis:72px}.seo-help-links{gap:8px}.seo-help-links a{font-size:12px;padding:7px 10px}}
   </style>
 
 </head>
@@ -146,19 +154,21 @@
       <p class="small-note">Please confirm product availability and details with the seller before ordering.</p>
     </section>
   
+  
   <section class="seo-discovery-links" aria-labelledby="more-products-title">
-    <h2 id="more-products-title">Explore More at BlagSheik</h2>
-    <p>Discover more products from our collection.</p>
+    <p class="discovery-kicker">THE BLAGSHEIK COLLECTION</p>
+    <h2 id="more-products-title">Find Something You’ll Love</h2>
+    <p class="discovery-intro">Explore more thoughtfully selected essentials from our collection.</p>
     <div class="seo-related-grid">
-      <a class="seo-related-link" href="../products/product-1.html"><span>Kemei KM-6330 3-in-1 Grooming Kit</span><strong>৳1,299</strong></a>
-      <a class="seo-related-link" href="../products/product-2.html"><span>Smart Watch with Bluetooth Calling – Premium Gold Edition</span><strong>৳1,599</strong></a>
-      <a class="seo-related-link" href="../products/product-4.html"><span>1.8L Multifunctional Electric Cooking Pot</span><strong>৳889</strong></a>
-      <a class="seo-related-link" href="../products/product-5.html"><span>HTC AT-538 Professional Hair Trimmer</span><strong>৳699</strong></a>
+      <a class="seo-related-link" href="../products/product-1.html"><img class="related-thumb" src="../image/product-1.jpg" alt="" loading="lazy"><span class="related-copy"><span class="related-name">Kemei KM-6330 3-in-1 Grooming Kit</span><span class="related-price">৳1,299</span></span><span class="related-arrow" aria-hidden="true">›</span></a>
+      <a class="seo-related-link" href="../products/product-2.html"><img class="related-thumb" src="../image/product-2.jpg" alt="" loading="lazy"><span class="related-copy"><span class="related-name">Smart Watch with Bluetooth Calling – Premium Gold Edition</span><span class="related-price">৳1,599</span></span><span class="related-arrow" aria-hidden="true">›</span></a>
+      <a class="seo-related-link" href="../products/product-4.html"><img class="related-thumb" src="../image/product-4.jpg" alt="" loading="lazy"><span class="related-copy"><span class="related-name">1.8L Multifunctional Electric Cooking Pot</span><span class="related-price">৳889</span></span><span class="related-arrow" aria-hidden="true">›</span></a>
+      <a class="seo-related-link" href="../products/product-5.html"><img class="related-thumb" src="../image/product-5.jpg" alt="" loading="lazy"><span class="related-copy"><span class="related-name">HTC AT-538 Professional Hair Trimmer</span><span class="related-price">৳699</span></span><span class="related-arrow" aria-hidden="true">›</span></a>
     </div>
     <nav class="seo-help-links" aria-label="Shopping information">
       <a href="../delivery-shipping.html">Delivery &amp; Shipping</a>
-      <a href="../return-exchange.html">Return &amp; Exchange</a>
-      <a href="../contact.html">Contact BlagSheik</a>
+      <a href="../return-exchange.html">Returns &amp; Exchange</a>
+      <a href="../contact.html">Contact Us</a>
       <a href="../index.html">Shop All Products</a>
     </nav>
   </section>
